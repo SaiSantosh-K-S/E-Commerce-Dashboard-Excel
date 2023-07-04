@@ -1,0 +1,29 @@
+The below are the workings applied in preparing the sales dash board:
+
+1.Custom Sorting to identify the unique values- Product Category &  Regions from the report.
+
+2. Tables and Chart for viewing Annual Sales and Profit, Regional Sales in "Sales & Profit" Working Sheet
+
+3."SUMIFS" function to obatian data for the tables and chart from the reports 
+
+For Table 1:-
+Sales- =SUMIFS('Sales Data'!$H$6:$H$51295,'Sales Data'!$U$6:$U$51295,'Sales & Profit'!B8,'Sales Data'!$F$6:$F$51295,O$2),From Cell C8
+Profit- =SUMIFS('Sales Data'!$K$6:$K$51295,'Sales Data'!$U$6:$U$51295,'Sales & Profit'!B8,'Sales Data'!$F$6:$F$51295,O$2),From Cell D8
+
+For Table 2:-
+Regional Sale-=SUMIFS('Sales Data'!$H$6:$H$51295,'Sales Data'!$T$6:$T$51295,'Sales & Profit'!L8,'Sales Data'!$F$6:$F$51295,O$2),From Cell M8
+
+4.Combo Box inserted in "Sales & Profit" Working Sheet to view and control the tables and chart by setting an "Offset Function" for 
+product category
+
+Combo Box- From Cell Q2, Input Range-$M$2:$M$5; Cell Link-$N$2
+
+Product Category-=OFFSET(M1,N2,0),From Cell O2 ("Sales & Profit" Working Sheet)
+
+5. Conditional Formatting to highlight sales by region in the table 2 based on Avg.sales of different product by region,
+
+Avg.Sales= Totals Sales/ No: Of Regions, Cell M26 ("Sales & Profit" Working Sheet)
+
+Highlight in green with dark green words for sales above Avg
+Hihilight in red with dark red words for sales below Avg
+
